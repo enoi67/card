@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const BasketContext = createContext({})
 
@@ -11,12 +11,20 @@ const BasketProvider = ({children}) => {
 
         if (!isExist) {
             setBasketData([...basketData, data])
-            localStorage.setItem("product", JSON.stringify([...basketData, data]))
         }
     }
 
+    const deleteItemFromBask = (id) =>{
+        const newData = basketData.filter((item)=> item.id !== id)
+        setBasketData(newData);
+    }
+
+    useEffect(() => {
+        localStorage.setItem("product", JSON.stringify(basketData || []))
+    }, [])
+
     return (
-        <BasketContext.Provider value={{ basketData, addBasket }}>{children}</BasketContext.Provider>
+        <BasketContext.Provider value={{ basketData, addBasket, deleteItemFromBask }}>{children}</BasketContext.Provider>
     )
 }
 

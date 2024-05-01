@@ -52,7 +52,7 @@ const NewTask = () => {
                   </button>
                   <button
                     onClick={() => onAdd(product)}
-                    className="z-[999] py-1 px-2 text-white bg-green-500 left-0"
+                    className="z-[999] py-1 px-2 text-white bg-green-500 rounded-md left-0"
                   >
                     Add to basket
                   </button>
