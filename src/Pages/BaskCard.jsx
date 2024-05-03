@@ -24,8 +24,10 @@ const BaskCard = ({ item }) => {
     return (
         <div className="flex gap-2 mb-5 shadow-2xl mt-5 h-[75px] relative px-5" key={item.id}>
         <div className="flex justify-between items-center gap-2">
+            <img src={item.img} alt={item.title} className="h-[50px]"/>
             <h2>{item.title}</h2>
             <p>{item.subtitle}</p>
+            <p>{parseInt(item.price) * count}</p>
             <div className="absolute right-5">
                 <div className="flex flex-row justify-between items-center gap-1">
                     <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={decrement}>-</button>

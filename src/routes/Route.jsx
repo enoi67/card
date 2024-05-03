@@ -10,6 +10,9 @@ import UserProvider from "../Context/UserContext";
 import BasketProvider from "../Context/basket";
 import Post from "../Context/PostData";
 import BasketPage from "../Pages/Bask";
+import Home from "../Pages/Home";
+import Products from "../Pages/Products";
+import DynamicPage from "../Pages/DynamicPage";
 
 const route = createBrowserRouter([
   {
@@ -17,7 +20,15 @@ const route = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <NewTask />,
+        element: <Home />,
+      },
+      {
+        path: '/products',
+        element: <Products />
+      },
+      {
+        path: 'products/:id',
+        element: <DynamicPage />
       },
       {
         path: "/modelS",
@@ -46,6 +57,10 @@ const route = createBrowserRouter([
       {
         path: "/basket",
         element: <BasketPage />
+      },
+      {
+        path: "*",
+        element:<h1>Error</h1>
       }
     ],
   },

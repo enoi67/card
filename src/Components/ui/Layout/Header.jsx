@@ -32,6 +32,7 @@ const Header = () => {
                             <li className="px-5 relative hidden md:block z-[999]  hover:bg-slate-100 py-[5px] rounded"><a onMouseEnter={() => setIsHovered(true)} href="">Charging</a></li>
                             <li className="px-5 relative hidden md:block z-[999]  hover:bg-slate-100 py-[5px] rounded"><a onMouseEnter={() => setIsHovered(true)} href="">Discover</a></li>
                             <li className="px-5 relative hidden md:block z-[999]  hover:bg-slate-100 py-[5px] rounded"><a onMouseEnter={() => setIsHovered(true)} href="">Shop</a></li>
+                            <li className="px-5 relative hidden md:block z-[999]  hover:bg-slate-100 py-[5px] rounded"><Link to={'/products'}>Product</Link></li>
                         </ul>
                     </nav>
                 </div>

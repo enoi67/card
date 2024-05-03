@@ -3,10 +3,12 @@ import "./sorry.css";
 import { UserContext } from "./Context/UserContext";
 import { Link } from "react-router-dom";
 import { BasketContext } from "./Context/basket";
+import { useNavigate } from "react-router-dom";
 
 const NewTask = () => {
   const { data, deleteItem, setData } = useContext(UserContext);
   const { addBasket } = useContext(BasketContext);
+  const navigate = useNavigate()
 
   const onDelete = (id) => {
     deleteItem(id);
@@ -34,16 +36,18 @@ const NewTask = () => {
         </div>
       </div>
       <div className="grid grid-cols-4 gap-4 max-w-[1400px] mx-auto mt-[65px]">
-        {data.reverse().map((product) => (
+        {data.map((product) => (
           <div key={product.id}>
-            <div className="flip-card">
+            <div className="flip-card" onClick={() => navigate(`/products/${product.id}`)}>
               <div className="flip-card-inner">
                 <div className="flip-card-front">
+                  <img src={product.img} alt={product.title} className="w-full h-[200px] rounded-[20px]" />
                   <h1>{product.title}</h1>
-                  <p>[{product.desc}]</p>
+                  <p>{product.desc}</p>
                 </div>
                 <div className="flip-card-back">
                   <h1>{product.subtitle}</h1>
+                  <span>{product.price}</span>
                   <button
                     onClick={() => onDelete(product.id)}
                     className="z-[999] py-1 px-3 bg-red-500 rounded-[50%] text-white absolute top-0 right-0"
@@ -52,7 +56,7 @@ const NewTask = () => {
                   </button>
                   <button
                     onClick={() => onAdd(product)}
-                    className="z-[999] py-1 px-2 text-white bg-green-500 rounded-md left-0"
+                    className="block z-[999] py-1 px-2 text-white bg-green-500 rounded-md left-0 max-w-[100px] mx-auto"
                   >
                     Add to basket
                   </button>
